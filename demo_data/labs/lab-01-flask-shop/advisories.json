@@ -1,0 +1,4 @@
+[
+  {"cve_id": "CVE-2023-30861", "claim": "Flask session cookie leak via proxy caching: no patch available."},
+  {"cve_id": "CVE-2020-14343", "claim": "PyYAML arbitrary code execution: no known fix, unpatched."}
+]
