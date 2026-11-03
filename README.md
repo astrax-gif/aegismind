@@ -1,12 +1,8 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=220&section=header&text=AegisMind%20AI&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Zero-Trust%20Security%20Verification%20Engine&descSize=20&descAlignY=60" alt="AegisMind AI" />
+![AegisMind AI](https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=220&section=header&text=AegisMind%20AI&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Zero-Trust%20Security%20Verification%20Engine&descSize=20&descAlignY=60)
 
-<a href="https://github.com/YOUR_USERNAME/aegismind">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=00F5D4&center=true&vCenter=true&width=760&lines=Sensitive+code+never+leaves+your+machine;Stale+CVE+advisories+caught+with+live+web+intel;Cloud+outage%3F+Automatic+failover%2C+zero+data+leaks;60-second+voice+briefings+for+your+SOC" alt="Typing animation" />
-</a>
-
-<br/>
+[![Typing animation](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=00F5D4&center=true&vCenter=true&width=760&lines=Sensitive+code+never+leaves+your+machine;Stale+CVE+advisories+caught+with+live+web+intel;Cloud+outage%3F+Automatic+failover%2C+zero+data+leaks)](https://github.com/astrax-gif/aegismind)
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
@@ -19,7 +15,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 ![Hackathon](https://img.shields.io/badge/Geek_Room-Global_AI_Hackathon-ff4d6d?style=flat-square)
 
-**[🎥 Demo Video](YOUR_VIDEO_LINK)** · **[📐 Architecture](docs/architecture.md)** · **[🛡️ Security Scope](SECURITY.md)**
+[**🎥 Demo Video**](PASTE_YOUR_YOUTUBE_VIDEO_URL_HERE) · [**📐 Architecture**](docs/architecture.md) · [**🛡️ Security Scope**](SECURITY.md)
 
 </div>
 
@@ -27,12 +23,7 @@
 
 ## 🎬 See it in action
 
-<div align="center">
-
-<!-- Record a 15-30s GIF of a real scan with a cloud failure injected, save as docs/assets/demo.gif -->
-<img src="docs/assets/demo.gif" alt="AegisMind live demo" width="900" />
-
-</div>
+![AegisMind live demo](docs/assets/demo.gif)
 
 ---
 
@@ -43,7 +34,7 @@ AI security tools have two failure modes:
 1. **They leak.** Private source code and secrets get sent to cloud LLMs.
 2. **They go stale.** They repeat advisories like *"CVE-XXXX has no patch"* long after a fix shipped.
 
-AegisMind fixes both. Sensitive data is physically unable to reach a cloud model, and every advisory claim is re-verified against live web sources before anyone acts on it.
+AegisMind addresses both. Sensitive data is routed only to a local model, and advisory claims are re-checked against live web sources before anyone acts on them.
 
 ## 🧠 How it works
 
@@ -51,10 +42,10 @@ AegisMind fixes both. Sensitive data is physically unable to reach a cloud model
 |---|---|
 | 🔒 **Zero-trust routing** | A classifier tags every LLM call. Private code, secrets, and exploit material are locked to a **local Ollama model**. If the local model is down, the call **fails closed**. It never falls back to cloud. |
 | 🌐 **Stale-claim verification** | Tavily searches trusted security sources, and each claim gets a verdict: `CONFIRMED`, `STALE_CONTRADICTED`, `REVOKED`, or `UNVERIFIABLE`, plus a transparent 0-100 **Freshness Score**. |
-| 🛡️ **Gateway governance** | All model traffic goes through **Bifrost**: provider failover, budgets, rate limits, token tracking. |
+| 🛡️ **Gateway governance** | Model traffic goes through **Bifrost**: provider failover, budgets, rate limits, token tracking. |
 | ♻️ **Resilience** | Per-route circuit breakers, retry with backoff, per-run and global spend caps, and a chaos switch to inject cloud failures live. |
-| 📊 **Trace dashboard** | Live tool calls, route decisions, token usage, cost per run, and failover events. |
-| 🎙️ **Voice war-room briefing** | A 60-second spoken executive summary built **only from aggregate results**, never from private code. |
+| 📊 **Trace dashboard** *(in progress)* | Live tool calls, route decisions, token usage, cost per run, and failover events. |
+| 🎙️ **Voice briefing** *(in progress)* | A 60-second spoken summary built **only from aggregate results**, never from private code. |
 
 ## 🏗️ Architecture
 
@@ -113,7 +104,7 @@ sequenceDiagram
 | Voice briefing (smallest.ai / Omnidimension) | 🚧 |
 | Docker Compose one-command launch | 🚧 |
 
-> Update this table as you ship. Never mark something ✅ that you haven't run end to end.
+✅ = run end to end. 🚧 = in progress.
 
 ## 🚀 Quick start
 
@@ -121,7 +112,7 @@ sequenceDiagram
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USERNAME/aegismind.git && cd aegismind
+git clone https://github.com/astrax-gif/aegismind.git && cd aegismind
 
 # 2. Local model (sensitive traffic stays here)
 ollama pull llama3.1:8b
@@ -141,7 +132,11 @@ uvicorn app.main:app --reload --port 8000
 cd frontend && npm install && npm run dev
 ```
 
+On Windows PowerShell, activate the virtual environment with `.venv\Scripts\activate` instead of `source .venv/bin/activate`.
+
 Open **http://localhost:5173**, pick `lab-01-flask-shop`, and press **Scan**.
+
+> Never commit `.env`. Keep real keys out of the repo and rotate any key that was ever pushed.
 
 ## 🧪 Try the demo labs
 
@@ -150,7 +145,7 @@ Open **http://localhost:5173**, pick `lab-01-flask-shop`, and press **Scan**.
 | `lab-01-flask-shop` | Vulnerable Flask app + advisories claiming "no patch" that Tavily should contradict |
 | `lab-02-yaml-api` | Unsafe YAML parsing + a mix of confirmed and stale advisories |
 
-**Prove the zero-trust claim:** open the dashboard, set the chaos slider to 100%, and re-run a scan. The summary fails over to the local model, and the private code review never touches the cloud in either case.
+**Test the zero-trust claim:** open the dashboard, set the chaos slider to 100%, and re-run a scan. The summary fails over to the local model, and the private code review never touches the cloud in either case.
 
 ```bash
 # or from the terminal
@@ -171,21 +166,15 @@ AegisMind is a **defensive** tool. Scans run only against the allowlisted labs i
 
 ## 🗺️ Roadmap
 
-- [ ] LLM adjudication pass over Tavily evidence
-- [ ] Persistent run storage
-- [ ] Multi-lab batch scans
-- [ ] Exportable incident reports
+- LLM adjudication pass over Tavily evidence
+- Persistent run storage
+- Multi-lab batch scans
+- Exportable incident reports
 
 ## 🤝 Built with
 
 [Bifrost](https://github.com/maximhq/bifrost) · [Tavily](https://tavily.com) · [FastAPI](https://fastapi.tiangolo.com) · [React](https://react.dev) · [Ollama](https://ollama.com)
 
-Built for the **Geek Room Global AI Hackathon** (hackCBS / HackCulture).
-
-<div align="center">
+Built for the **Geek Room Global AI Hackathon** (hackCBS / HackCulture) by [@astrax-gif](https://github.com/astrax-gif).
 
 **MIT License**
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=120&section=footer" alt="" />
-
-</div>
