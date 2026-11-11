@@ -8,3 +8,6 @@ sweepbot/
 __pycache__/
 *.pyc
 sweepbot/
+
+node_modules/
+dist/
