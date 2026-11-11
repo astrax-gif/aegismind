@@ -3,3 +3,8 @@
 __pycache__/
 *.pyc
 sweepbot/
+
+.env
+__pycache__/
+*.pyc
+sweepbot/
